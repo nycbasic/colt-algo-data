@@ -1,0 +1,28 @@
+Big O Notation: Time Complexity
+    - Compares performance or test performance of code.
+    - Provides a numeric performance of code.
+    - Helps identify bottlenecks in specific parts of your code.
+    - Explains the relationship of the input and how it changes the runtime of that code.
+    - Constants don't matter.
+
+    Counting Operations
+        - Operations are considered multiplication, addition, division, and operators.
+
+    Big O Definition
+        - linear: f(n) = n
+        - Quadratic: f(n) = n²
+        - Constant: f(n) = 1
+
+
+    - Arithmetic operations are Constant run time
+    - Variable assignments are Constant run time
+    - Accessing elements in an array(by index) or object(by key) is constant run time.
+    - In a loop, the complexity is the length of the loop times the complexity of whatever happens inside of the loop.
+
+Big O Notation: Space Complexity
+    - Most primitives are constant Space
+    - String requires O(n) space (where n is the string length);
+    - Reference types are generally O(n), where n is the length (for arrays) or the number of keys (for objects).
+
+Big On Notation: Logarithms
+    -  ?
