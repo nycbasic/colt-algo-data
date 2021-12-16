@@ -1,0 +1,3 @@
+Frequency Patterns
+    - The pattern uses objects or sets to collect values/frequency values.
+    - This pattern can often avoid the need for nested loops O(n²) operations with arrays/strings. 
