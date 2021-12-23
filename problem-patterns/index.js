@@ -149,4 +149,29 @@ function countUniqueValues2(arr) {
 // Sliding Window Pattern Example - Write a function called maxSubarraySum which accepts an array of integers and a number called n.
 // The function should calculate the maxiumum sum of an consecutive elements in the array.
 
+function maxSubarraySum(arr, num) {
+  // keep track of the largests subarray sumj
+  let maxSum = 0;
+  // keep track of the temporary largest subarray sum
+  let tempSum = 0;
+  // Edge casse, if the arr length is greater than the num param, return null
+  if(arr.length < num) {
+    return null;
+  }
+  // Sum the num amount and stores to the maxSum
+  for(let i = 0; i < num; i++) {
+    maxSum += arr[i];
+  }
+  // Set the tempSum to the current maxSum
+  tempSum = maxSum;
+
+  // Loop through the arr
+  for(let i = num; i < arr.length; i++) {
+    // make temp sum remove the first intial value and add the end of the required value?
+    tempSum = tempSum - arr[i - num] + arr[i];
+    // set maxSUm to the largest sum value
+    maxSum = Math.max(maxSum, tempSum);
+  }
+  return maxSum;
+}
 
