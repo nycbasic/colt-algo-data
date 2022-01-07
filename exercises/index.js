@@ -26,10 +26,10 @@ function sameFrequency(int1, int2) {
     // if the val exists in the hashmap then add to the count
     if (str1Obj[val]) {
       str1Obj[val] = str1Obj[val] + 1;
+      // else if the num does not exist create a key with the value 0.
     } else {
       str1Obj[val] = 1;
     }
-    // else if the num does not exist create a key with the value 0.
   }
   // loop throught the converted string int2
   for (let val of strInt2) {
@@ -40,9 +40,10 @@ function sameFrequency(int1, int2) {
       str2Obj[val] = 1;
     }
   }
+
   // loop though the converted hashmap for int1
   for (let key in str1Obj) {
-    // if the key does not exist in the hashmap of int1 return false
+    // if the key from the first hashmap does not exist in the second hashmapt1 return false
     if (!str2Obj[key]) {
       return false;
     }
@@ -55,4 +56,36 @@ function sameFrequency(int1, int2) {
   return true;
 }
 
+// Problem #2 - check if there are any duplicates among the arguments passed in.
+// areThereDuplicates(1,2,3) // => false
+// areThereDuplicates(1,2,2) => true
+// areThereDuplicates('a','b','c','a') => true
+// Edge cases:
+//  ('') > (["a"], ["b"], ["c"]) > ({a:a}, {a:a}) > ({a:a}, ['a']) > ('this is a string')
+// Input: array(numbers, chars)
+// Output: boolean
 
+function areThereDuplicates(...args) {
+  // handle edge cases
+  if (
+    args.length < 1 ||
+    args[0].constructor === Array ||
+    args[0].constructor === Object
+  ) {
+    return false;
+  }
+  // create pointers
+  let pointer1 = 0;
+  const sortedArray = args.sort();
+  // loop through args starting from 2nd index
+  for(let pointer2 = 1; pointer2 < sortedArray.length; ++pointer2) {
+    if(sortedArray[pointer2] !== sortedArray[pointer1]) {
+      pointer1++;
+    } else {
+      return true;
+    }
+  }
+  return false;
+}
+
+console.log(areThereDuplicates(1,2,3,4,5));
