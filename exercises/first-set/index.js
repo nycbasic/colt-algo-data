@@ -108,9 +108,9 @@ function areThereDuplicates2(...args) {
   // create frequency hashmap
   const hashMap = {};
   // Loop through the args
-  for(let val of args) {
+  for (let val of args) {
     // If val exists in the hashmap
-    if(hashMap[val]) {
+    if (hashMap[val]) {
       // add to the exisiting object count
       hashMap[val] = hashMap[val] + 1;
     } else {
@@ -119,9 +119,9 @@ function areThereDuplicates2(...args) {
     }
   }
   // loop through the hsshMap
-  for(let key in hashMap) {
+  for (let key in hashMap) {
     // if the key value is greater than 1
-    if(hashMap[key] > 1) {
+    if (hashMap[key] > 1) {
       // return true
       return true;
     }
@@ -130,8 +130,41 @@ function areThereDuplicates2(...args) {
   return false;
 }
 
+// Problem #3 - Given a sorted array of int and a target average,
+// determine if there is a pair of values in the array where the
+// average of the pair equals the target average.
+// Edge Cases:
+// ({}, "some string"), ("str", 1), ([], 2.4, 34), ("str", "str"), (1,2) etc...
+// Inputs: array, number
+// Output: boolean
 
-
-
-
+function averagePair(arr, avg) {
+  // Handle edge case
+  if (
+    arr.constructor !== Array ||
+    typeof avg !== "number" ||
+    arguments.length > 2
+  ) {
+    return false;
+  }
+  // Sort the arr and store it
+  const sortedArray = arr.sort();
+  // Create first pointer starting point
+  let pointer1 = 0;
+  // Loop through the arr
+  for (let pointer2 = 1; pointer2 < sortedArray.length; pointer2++) {
+    // store the sum of the two pointer values
+    let sum = sortedArray[pointer1] + sortedArray[pointer2];
+    // if the sum divided by the avg equal the avg
+    if (sum % avg === 0) {
+      // return true
+      return true;
+    }
+    // else
+    // move pointer1 up;
+    pointer1++;
+  }
+  // return false if there are no sums that match the avg
+  return false;
+}
 
