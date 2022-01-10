@@ -168,6 +168,43 @@ function averagePair(arr, avg) {
   return false;
 }
 
+// Problem #4 - check whether the characters from the first string is a subsequence
+// of the characters in the second string.
+// Edge cases:
+// ([],{}), (num, num), (num, "str") ("","")etc..
+// Input: string, string
+// Output: boolean
 
+function isSubequence(str1, str2) {
+  // Check for edge cases
+  if (
+    typeof str1 !== "string" ||
+    typeof str2 !== "string" ||
+    str1.length < 1 ||
+    str2.length < 1
+  ) {
+    return false;
+  }
 
+  if (!str1) true;
+  // lowercase both strings
+  const lcaseStr1 = str1.toLowerCase();
+  const lcaseStr2 = str2.toLowerCase();
+  // create pointers
+  let pointer1 = 0;
+  // Create an array to store found chars
+  let foundChars = [];
+  // Loop through str2
+  for (let pointer2 = 0; pointer2 < lcaseStr2.length; pointer2++) {
+    // If str1 pointer1 value is equal to str2 pointer 2 value
+    if (lcaseStr1[pointer1] === lcaseStr2[pointer2]) {
+      // push char into array of found chars
+      foundChars.push(lcaseStr2[pointer2]);
+      // pointer1 and pointer2 moves up
+      pointer1++;
+    }
+  }
+  // // return true if lcaseStr1 matches the joined array of found chars.
+  return foundChars.join("") === lcaseStr1 ? true : false;
+}
 
