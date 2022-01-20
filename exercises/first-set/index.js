@@ -208,3 +208,44 @@ function isSubequence(str1, str2) {
   return foundChars.join("") === lcaseStr1 ? true : false;
 }
 
+// Problem #5 - find the maximum sum of a subarray with the length of the number passed to the function.
+// Edge cases:
+// ({}, "str"), ("str", "str"), ([], []), ([], 2), ({}, 2) etc...
+// Inputs: array, number
+// Output: number
+
+function maxSubarraySum(arr, length) {
+  // store the sum of the largest subarray
+  let maxSum = 0;
+  // store the current sum of the largest subarray
+  let tempSum = 0;
+  // check for edge cases
+  if (
+    arr.length < 1 ||
+    arr.length < length ||
+    arr.constructor !== Array ||
+    typeof length !== "number"
+  ) {
+    return null;
+  }
+
+  // sets the first sum of the largest sub array.
+  for (let i = 0; i < length; ++i) {
+    // set max sum
+    maxSum += arr[i];
+  }
+  // set the current sum of the largest subarray with the sum of the largest subarray.
+  tempSum = maxSum;
+  // loop through the array
+  for (let i = length; i < arr.length; ++i) {
+    // Set the sum of current largest subrray
+    //  to the current sum of the subarray minus the current arr index minus the set
+    // length plus the current index of the arr.
+    tempSum = tempSum - arr[i - length] + arr[i];
+    // compare the temp sum and the max sum and set the max sum to the largest
+    maxSum = Math.max(maxSum, tempSum);
+  }
+  return maxSum;
+}
+
+
