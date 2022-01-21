@@ -155,16 +155,17 @@ function maxSubarraySum(arr, num) {
   if (arr.length < num) {
     return null;
   }
+
   // Sets the starting point with the sum of the required num
   for (let i = 0; i < num; i++) {
     maxSum += arr[i];
   }
   // Set the tempSum to the current maxSum
   tempSum = maxSum;
-  
+
   // Loop through the arr
   for (let i = num; i < arr.length; i++) {
-    // make temp sum remove the first intial value and add the end of the required value?
+    // make temp sum remove the first intial value and add the end of the required value? Represents the sliding door.
     tempSum = tempSum - arr[i - num] + arr[i];
     // set maxSUm to the largest sum value
     maxSum = Math.max(maxSum, tempSum);

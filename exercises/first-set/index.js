@@ -248,4 +248,49 @@ function maxSubarraySum(arr, length) {
   return maxSum;
 }
 
+// Problem #6 - Return the minimal contigous subarray of which the sum is greater or equal to the integer passed in the function. If there isn't one, return 0.
+// Edge cases:
+// ([], 34), ([], "str"), ({}, 54), ([], []), ({}, {}), ([40, -4, 50, -6], 78)
+// Input: array, int
+// Output: number
 
+function minSubArrayLen(arr, num) {
+  // Handle edge case
+  if (
+    arr.length < 1 ||
+    arr.constructor !== Array ||
+    typeof num !== "number" ||
+    num < 0
+  ) {
+    return false;
+  }
+  // Create the length of the numbers to add
+  let len = 1;
+  // Create a maxSum and a tempSum
+  let maxSum = num;
+  let tempSum = 0;
+  let items = [];
+  // Using a loop, set the sum of the set length as the current maxSum.
+  for (let i = 0; i < len; ++i) {
+    maxSum += arr[i];
+  }
+  // Create a new array to store the numbers that sum to the needed total
+  tempSum = maxSum;
+  console.log(tempSum)
+  // Loop through the arr
+  for (let i = len; i < arr.length; i++) {
+    tempSum = tempSum - arr[i - len] + arr[i];
+
+    console.log("from the iteration of arr", tempSum)
+    // logic....
+    if (tempSum >= num) {
+      items.push(arr[i - len]);
+    } else {
+      len = len + 1;
+    }
+  }
+  console.log(len);
+  return 0;
+}
+
+minSubArrayLen([1, 2, 5, 2, 8], 10);
