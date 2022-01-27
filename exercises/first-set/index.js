@@ -248,4 +248,44 @@ function maxSubarraySum(arr, length) {
   return maxSum;
 }
 
+// Problem #6 - Return the minimal length of a contiguous subarray of which the sum is greater than or equal to
+// the integer passed to the function. If there isn't one, return 0 instead.
+// Edge cases:
+// ([], 8), ([], "str"), ([-1,-2], 4), ({}, {}), ([], []), ([1,34], -56)
+// Input: array, positive integer
+// Output: number
 
+function minSubArrayLen(nums, sum) {
+  let total = 0;
+  let start = 0;
+  let end = 0;
+  let minLen = Infinity;
+
+  while (start < nums.length) {
+    // if current window doesn't add up to the given sum then
+    // move the window to right
+    if (total < sum && end < nums.length) {
+      total += nums[end];
+      end++;
+      console.log("first if statement: start", start);
+      console.log("first if statement: end", end);
+      console.log("first if statement: total", total);
+    }
+    // if current window adds up to at least the sum given then
+    // we can shrink the window
+    else if (total >= sum) {
+      minLen = Math.min(minLen, end - start);
+      total -= nums[start];
+      start++;
+      console.log("second if statement: total", total);
+    }
+    // current total less than required total but we reach the end, need this or else we'll be in an infinite loop
+    else {
+      break;
+    }
+  }
+
+  return minLen === Infinity ? 0 : minLen;
+}
+
+console.log(minSubArrayLen([2, 3, 1, 2, 4, 3], 7));
