@@ -288,7 +288,32 @@ function minSubArrayLen(nums, sum) {
   return minLen === Infinity ? 0 : minLen;
 }
 
-console.log(minSubArrayLen([2, 3, 1, 2, 4, 3], 7));
+function minSubArrayLen2(arr, sum) {
+  let start = 0;
+  let total = 0;
+  let minLen = Infinity;
 
+  for (let end = 0; end < arr.length; ++end) {
+    total += arr[end];
+    if (total >= sum) {
+      console.log("from the if statement in the for loop: minLen", minLen)
+      console.log("from the if statement in the for loop: end - start", end - start)
+      minLen = Math.min(minLen, end - start);
+      total -= arr[start];
+      start++;
+      if(end === arr.length - 1){
+        minLen = Math.min(minLen, end - start);
+      }
+    }
+    console.log("from the for loop: start", start);
+    console.log("from the for loop: end", end);
+    console.log("from the for loop: after/total", total);
+  }
+  console.log("from the scope of the function", start);
+  console.log("from the scope of the function", total);
+  console.log("from the scope of the function", minLen);
+  return minLen === Infinity ? 0 : minLen
+}
 
-
+// console.log(minSubArrayLen2([2, 3, 1, 2, 4, 3], 7));
+console.log(minSubArrayLen2([2, 1, 6, 5, 4], 9));
