@@ -6,7 +6,6 @@
 // Function should mimic the Math.pow() function.
 // No need to worry about negative exponents.
 
-
 // Inputs: (number: base, number: exponent);
 // Outputs: number
 // Edge Cases:
@@ -36,7 +35,6 @@ function power(base, exponent) {
 // Write a function factorial which accepts a number.
 // The return value should be the factorial of the number.
 
-
 // Input: number
 // Output: number
 // Edge cases:
@@ -59,9 +57,38 @@ function factorial(num) {
 // Takes in an array of numbers.
 // Returns the product of all the numbers
 
-
 // Input: [numbers]
 // Output: number
 // Edge Cases:
 // ("str"), ({}), ([empty]), ([],[]), ([number, "str", {}])
 
+// Ex: [1,2,3,4] = 1 * 2 * 3 * 4 = 24
+// need to the items in the array.
+
+function productOfArray(arr) {
+  const areNumbers = arr.every((item) => {
+    return typeof item === "number";
+  });
+  // Edge case:
+  if (
+    !Array.isArray(arr) ||
+    !areNumbers ||
+    productOfArray.arguments.length > 1 ||
+    arr.length < 1
+  ) {
+    return false;
+  }
+
+  let product = 1;
+
+  // Base Case:
+  if (arr.length === 0) {
+    return product;
+  }
+
+  // Recursive Case:
+  product = product * productOfArray(arr.slice(1));
+  return product * arr[0]
+}
+
+console.log(productOfArray([1, 2, 3]));
