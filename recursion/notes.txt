@@ -10,3 +10,11 @@ Recursion
 Call Stack
 - data is placed at the top of the Stack(push)
 - data is removed from the top(pop)
+
+MAKE SURE TO ALWAYS HAVE A BASE CASE THAT RETURNS! OR A BASE CASE THAT MAKES SENSE!
+
+
+Helper Method Recursion
+- a function that has another function that handles the recursion in it's local scope.
+
+Pure Recursion
