@@ -1,0 +1,12 @@
+Recursion
+- Examples:
+    JSON.parse()
+    JSON.stringify()
+    document.getElementById
+    - Object traversal
+    - See it in more complext data structures
+    - cleaner code.
+
+Call Stack
+- data is placed at the top of the Stack(push)
+- data is removed from the top(pop)
