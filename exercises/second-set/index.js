@@ -76,19 +76,20 @@ function productOfArray(arr) {
     productOfArray.arguments.length > 1 ||
     arr.length < 1
   ) {
-    return false;
+    console.log("Edge Case")
+    return 1;
   }
 
-  let product = 1;
+  // let product = 1;
 
   // Base Case:
   if (arr.length === 0) {
-    return product;
+    console.log("Base Case");
+    return 1
   }
 
   // Recursive Case:
-  product = product * productOfArray(arr.slice(1));
-  return product * arr[0]
+  return arr[0] * productOfArray(arr.slice(1))
 }
 
-console.log(productOfArray([1, 2, 3]));
+console.log(productOfArray([1,2]));
