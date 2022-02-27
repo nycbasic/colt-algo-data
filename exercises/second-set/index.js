@@ -66,30 +66,27 @@ function factorial(num) {
 // need to the items in the array.
 
 function productOfArray(arr) {
+  // Base Case:
+  if (arr.length < 1) {
+    console.log("Base Case")
+    return 1;
+  } 
+
   const areNumbers = arr.every((item) => {
     return typeof item === "number";
   });
-  // Edge case:
+  // Edge Case:
   if (
     !Array.isArray(arr) ||
     !areNumbers ||
-    productOfArray.arguments.length > 1 ||
-    arr.length < 1
+    productOfArray.arguments.length > 1 
   ) {
-    console.log("Edge Case")
+    console.log("Edge Case #2")
     return 1;
-  }
-
-  // let product = 1;
-
-  // Base Case:
-  if (arr.length === 0) {
-    console.log("Base Case");
-    return 1
   }
 
   // Recursive Case:
   return arr[0] * productOfArray(arr.slice(1))
 }
 
-console.log(productOfArray([1,2]));
+console.log(productOfArray([1,2,3,4]));
