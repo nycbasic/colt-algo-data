@@ -151,7 +151,7 @@ function fibRecursive(n) {
 
 function reverse(str) {
   // Edge Case:
-  if(typeof str !== "string" || reversed.arguments.length > 1) {
+  if(typeof str !== "string" || reverse.arguments.length > 1) {
     return false;
   }
 
@@ -164,3 +164,4 @@ function reverse(str) {
   return reverse(str.slice(1)) + str[0]
 }
 
+console.log(reverse("some"))
