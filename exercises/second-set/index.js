@@ -89,4 +89,78 @@ function productOfArray(arr) {
   return arr[0] * productOfArray(arr.slice(1))
 }
 
-console.log(productOfArray([1,2,3,4]));
+// Excercise #4
+// Write a function which accepts a number.
+// Adds all the number from 0 to the number passsed in the function.
+
+// Inputs: number
+// Outputs: number
+// Edge Cases:
+// ("str"), ({}), ([]), (boolean), ("str", []);
+
+// Ex: range(6) = 1 + 2 + 3 + 4 + 5 + 6 = 21;
+
+function recursiveRange(num) {
+  // Edge Case:
+  if(typeof num !== "number" || recursiveRange.arguments.length > 1) {
+    return false;
+  }
+
+  // Base Case:
+  if(num === 0) {
+    return num;
+  }
+  // Recursive Case:
+  return num + recursiveRange(num - 1);
+}
+
+// Exercise #5
+// Write a function which accepts a number.
+// Returns the nth number of the fib sequence.
+
+// Inputs: number
+// Output: number
+
+// Edge Case:
+// ("str"), ({}), ([]), (boolean), ("str", []);
+
+function fibRecursive(n) {
+  // Edge Case:
+  if(typeof n !== "number" || fibRecursive.arguments.length > 1) {
+    return 1;
+  }
+
+  // Base Case:
+  if(n <= 2) {
+    return 1;
+  }
+
+  // Recursive Case:
+  return fibRecursive(n - 1) + fibRecursive(n - 2);
+}
+
+// Exercise #6
+// Write a function that accepts a string.
+// Returns a the reversed version of the string.
+
+// Inputs: string
+// Output: string
+
+// Edge Case
+// (number), ({}), ([]), (boolean), ("str", []);
+
+function reverse(str) {
+  // Edge Case:
+  if(typeof str !== "string" || reversed.arguments.length > 1) {
+    return false;
+  }
+
+  // Base Case:
+  if(str.length < 1) {
+    return str;
+  }
+
+  // Recursion Case:
+  return reverse(str.slice(1)) + str[0]
+}
+
