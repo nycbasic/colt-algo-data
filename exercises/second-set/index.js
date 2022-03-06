@@ -146,7 +146,7 @@ function fibRecursive(n) {
 // Inputs: string
 // Output: string
 
-// Edge Case
+// Edge Case:
 // (number), ({}), ([]), (boolean), ("str", []);
 
 function reverse(str) {
@@ -164,4 +164,65 @@ function reverse(str) {
   return reverse(str.slice(1)) + str[0]
 }
 
-console.log(reverse("some"))
+// Exercise #7
+// Write a function which takes a string.
+// Returns true if the string passed is a palindrome.
+
+// Inputs: string
+// Outputs: boolean
+
+// Edge Case:
+// (number), ({}), ([]), (boolean), ("str", []);
+
+function isPalindrome(str) {
+  // Edge Case:
+  if(typeof str !== "string" || isPalindrome.arguments.length > 1) {
+    return false; 
+  }
+
+  // Base Case:
+  if(str.length < 2) {
+    return true;
+  }
+
+  if(str[0] === str[str.length - 1]) {
+    return isPalindrome(str.slice(1, str.length - 1))
+  }
+
+  return false;
+}
+
+
+// Exercise #8
+// Write a function that accepts an array and a callback.
+// Returns true if a single value in the array returns true when passed to the callback.
+
+// Inputs: array, function
+// Outputs: boolean
+
+// Edge Cases:
+// ({}, {}), ([], []), (num, func), (str, func) etc...
+
+// [1,2,3,4]
+const belowTen = (val) => {
+  return val > 10;
+}
+
+function someRecursive(arr, callback) {
+  // your solution.
+  // Base Case
+  if(arr.length < 1) {
+    return false;
+  }
+
+  let result = callback(arr[0]);
+
+  if(!result) { 
+    // Recursive Case;
+    return someRecursive(arr.slice(1), callback);
+  }
+
+  return result 
+}
+
+console.log(someRecursive([1,2,4, 11], belowTen));
