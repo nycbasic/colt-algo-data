@@ -204,25 +204,77 @@ function isPalindrome(str) {
 // ({}, {}), ([], []), (num, func), (str, func) etc...
 
 // [1,2,3,4]
-const belowTen = (val) => {
-  return val > 10;
-}
+const isOdd = val => val % 2 !== 0;
 
 function someRecursive(arr, callback) {
   // your solution.
-  // Base Case
+  // Edge Case:
+  if(typeof callback !== "function" || !Array.isArray(arr) || someRecursive.arguments.length > 2 || someRecursive.arguments.length < 2) {
+    return null;
+  }
+  // If there are no values in the array
+  // Base Case:
   if(arr.length < 1) {
+    // automatically return false;
     return false;
   }
 
+  // store the return value of the callback
   let result = callback(arr[0]);
 
+  // If the return value is false
   if(!result) { 
+    // continue the recursion
     // Recursive Case;
     return someRecursive(arr.slice(1), callback);
   }
-
-  return result 
+  // return the result when the recursion is done.
+  return result;
 }
 
-console.log(someRecursive([1,2,4, 11], belowTen));
+// Exercise #9
+// Write a function that accepts an array of arrays of values.
+// Returns a single array of values.
+
+// Inputs: array
+// Outputs: array
+
+// Edge Cases:
+// ([]), ("str"), (num), (boolean), ([""]), ([[]]),([],[])
+
+// Example: 
+// flatten([[1],[2],[3]]) // [1,2,3]
+// if any of the values in the array is an array
+// does the value contain an array
+
+function flatten(nestedArr) {
+  // Outut of the function
+  const flat = [];
+  // Using helper function to create a loop for the nested arrays
+  function helper(arr) {
+    // Tracks the index of the arrray
+    let counter = 0;
+    // Loops througth the array
+    while (counter < arr.length) {
+      // stores the value of the index in the array
+      const val = arr[counter];
+      // if the current value is an array
+      if(Array.isArray(val)) {
+        // recall the helper function
+        helper(val)
+        // else if the val is not an array
+      } else {
+        // push the value into the output array.
+        flat.push(val);
+      }
+      // Move the index up.
+      counter++;
+    }
+  }
+  // Start the helper function
+  helper(nestedArr);
+  // returnt he output array.
+  return flat;
+}
+
+console.log(flatten([1, 2, 3, [4, 5] ]));
