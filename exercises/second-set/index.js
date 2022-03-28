@@ -256,6 +256,7 @@ function flatten(nestedArr) {
     let counter = 0;
     // Loops througth the array
     while (counter < arr.length) {
+
       // stores the value of the index in the array
       const val = arr[counter];
       // if the current value is an array
