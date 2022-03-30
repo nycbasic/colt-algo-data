@@ -82,6 +82,20 @@ function binarySearch(arr, val) {
 // [5]
 // 4 4 4
 
+// Short Version
+function binarySearch2(arr, val) {
+  let start = 0;
+  let end = arr.length - 1;
+  let mid = Math.floor((start + end) / 2);
+
+  while (arr[mid] !== vall && start <= end) {
+    if (val < arr[mid]) end = mid - 1;
+    else start = mid + 1;
+    mid = Math.floor((start + end) / 2);
+  }
+  return arr[mid] === val ? mid : -1;
+}
+
 // Naive String Search (Linear Search)
 
 function naiveStringSearch(long, pattern) {
