@@ -1,0 +1,5 @@
+Inner Loops; 
+    - Inner loops will finish executing when the logic statement does not return true which will break out of the loop.
+
+Recursion:
+    - If there are two for the same recursive functions within the function, it will follow the top down thread. So the first recursive function will need to finish before the second one can run. Remember JavaScript is single thread, so the first will block the second until the first is done.
