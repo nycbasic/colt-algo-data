@@ -3,3 +3,7 @@ Inner Loops;
 
 Recursion:
     - If there are two for the same recursive functions within the function, it will follow the top down thread. So the first recursive function will need to finish before the second one can run. Remember JavaScript is single thread, so the first will block the second until the first is done.
+
+
+Watch for Patterns:
+    - When going through an algorithm, visualize it first and try to find a pattern.

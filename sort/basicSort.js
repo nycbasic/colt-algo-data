@@ -1,9 +1,28 @@
 // Solution #1: Bubble Sort *Unoptimized Approach*
+// has issues with making unecessary comparison
 function bubbleSort(arr) {
+  for (let i = 0; i < arr.length; ++i) {
+    for (let j = 0; j < arr.length; ++j) {
+      console.log(`Left: ${arr[j]} Right: ${arr[j + 1]}`);
+      console.log(arr);
+      if (arr[j] > arr[j + 1]) {
+        let temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+      }
+    }
+    console.log("PASS COMPLETE");
+  }
+  return arr;
+}
+
+// Solution #2  Optimized Approach
+function bubbleSort2(arr) {
   // Variable stops unccessary iteration
   let noSwap;
   // Keeps the count of the number of times to iterate throught the arr.
   for (let i = arr.length; i > 0; --i) {
+    noSwap = true;
     // Loop for the logic to make comparisons if a swap is needed.
     for (let j = 0; j < i - 1; ++j) {
       if (arr[j] > arr[j + 1]) {
@@ -22,7 +41,7 @@ function bubbleSort(arr) {
 }
 
 // Solution #2: Bubble Sort *Unoptimized Approach*
-function bubbleSort2(arr) {
+function bubbleSort3(arr) {
   const swap = (arr, idx, idx2) => {
     [arr[idx], arr[idx2]] = [arr[idx2], arr[idx]];
   };
@@ -48,8 +67,6 @@ function selectionSort(arr) {
     let min = i;
     // Loop that does the logic comparison for each item in the array.
     for (let j = i + 1; j < arr.length; ++j) {
-      testFunction(i, j);
-      console.log(arr[min])
       // if the second pointer is less than the first pointer
       if (arr[j] < arr[min]) {
         // Set the second pointer as the new 2
@@ -68,12 +85,10 @@ function selectionSort(arr) {
   return arr;
 }
 
-console.log(selectionSort([5, 99, 2, 45, 10, 34, 9]));
-
 // Solution #2: Selection Sort *Unoptimized Approach*
 function selectionSort2(arr) {
   const swap = (arr, idx, idx2) => {
-    [arr[idx], arr[idx2]] = [arr[idx2], arr[idx]];
+    return [arr[idx], arr[idx2]] = [arr[idx2], arr[idx]];
   };
 
   for (let i = 0; i < arr.length; ++i) {
@@ -94,92 +109,17 @@ function selectionSort2(arr) {
 function insertionSort(arr) {
   for (let i = 1; i < arr.length; ++i) {
     let currentVal = arr[i];
-    for (var j = i - 1; j >= 0 && arr[j] > currentVal; --j) {
+    for (let j = i - 1; j >= 0 && arr[j] > currentVal; --j) {
       arr[j + 1] = arr[j];
+      arr[j] = currentVal;
     }
-    arr[j + 1] = currentVal;
   }
   return arr;
 }
 
-// console.log(insertionSort([3, 56, 1, 2, 45, 23]));
-//                         [1, 2, 3, 23, 45, 56]
+console.log(insertionSort([3, 56, 1, 2, 45, 23]));
+//                        [1, 2, 3, 23, 45, 56]
 // i = null
 // j = 2
 // currentVal = null
 // arr[j] = null
-
-// Solution: Merge Sort
-function merge(arr1, arr2) {
-  let results = [];
-  let i = 0;
-  let j = 0;
-
-  // Loop that does the comparison
-  while (i < arr1.length && j < arr2.length) {
-    if (arr2[j] > arr1[i]) {
-      results.push(arr1[i]);
-      i++;
-    } else {
-      results.push(arr2[j]);
-      j++;
-    }
-  }
-
-  // if the first array still has data
-  while (i < arr1.length) {
-    results.push(arr1[i]);
-    i++;
-  }
-
-  // if the second array still has data
-  while (j < arr2.length) {
-    results.push(arr2[j]);
-    j++;
-  }
-
-  return results;
-}
-
-function mergeSort(arr) {
-  if (arr.length <= 1) {
-    return arr;
-  }
-  // splits the array in the middle
-  let mid = Math.floor(arr.length / 2);
-
-  // Left array splits again, with new mid-point
-  let left = mergeSort(arr.slice(0, mid));
-
-  // Right array splits again, with new mid-point
-  let right = mergeSort(arr.slice(mid));
-
-  return merge(left, right);
-}
-
-// Solution #1: Quick Sort
-function swap(arr, i, j) {
-  let temp = arr[i];
-  arr[i] = arr[j];
-  arr[j] = temp;
-}
-
-function pivot(arr, start = 0, end = arr.length + 1) {
-  let pivot = arr[0];
-  let swapIdx = start;
-
-  for (let i = start + 1; i < arr.length; ++i) {
-    if (pivot > arr[i]) {
-      swapIdx++;
-      swap(arr, swapIdx, i);
-    }
-  }
-  swap(arr, start, swapIdx);
-  return swapIdx;
-}
-
-
-
-function testFunction(idx, idx2) {
-  console.log(`index of j: ${idx}   index of i: ${idx2}`);
-}
