@@ -7,3 +7,8 @@ Recursion:
 
 Watch for Patterns:
     - When going through an algorithm, visualize it first and try to find a pattern.
+
+
+
+Review:
+ - Review Quick Sort and solve duplication returns.

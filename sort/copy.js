@@ -1,3 +1,12 @@
+// Universal functions
+function print(func) {
+  console.log(func);
+}
+
+function printIndex(idx, idx2) {
+  console.log(`Index of i: ${idx}  Index of j: ${idx2}`);
+}
+
 // Bubble Sort
 function bubbleSort(arr) {
   let noSwap;
@@ -72,30 +81,16 @@ function insertionSort(arr) {
   return arr;
 }
 
-function print(func) {
-  console.log(func);
-}
 
-function printIndex(idx, idx2) {
-  console.log(`Index of i: ${idx}  Index of j: ${idx2}`);
-}
-
-var insertionSortList = function (head) {
-  for (let i = 1; i < head.length; ++i) {
-    let currentVal = head[i];
-    for (let j = i - 1; j >= 0 && head[j] > currentVal; --j) {
-      head[j + 1] = head[j];
-      head[j] = currentVal;
-    }
-  }
-  return head;
-};
-
-
+// Merge Sort - While Loop
 function merge(arr, arr2) {
   const newArr = [];
   let pointer1 = 0;
   let pointer2 = 0;
+
+  if (!Array.isArray(arr) || !Array.isArray(arr2)) {
+    return null;
+  }
 
   while (pointer1 < arr.length && pointer2 < arr2.length) {
     if (arr[pointer1] < arr2[pointer2]) {
@@ -121,14 +116,15 @@ function merge(arr, arr2) {
 
 
 function mergeSort(arr) {
-  if(arr.length <= 1) {
+  if (arr.length <= 1) {
     return arr;
   }
 
-  let mid = Math.floor(arr.length/2)
+  let mid = Math.floor(arr.length / 2);
   let left = mergeSort(arr.slice(0, mid));
-  let right = mergeSort(arr.slice(mid))
-  return merge(left, right)
+  let right = mergeSort(arr.slice(mid));
+  return merge(left, right);
 }
 
-print(mergeSort([1,10,50,2,14,99,100]))
+print(merge([1, 10, 50], [2, 14, 99, 100]));
+print(mergeSort([2, 9, 5, 1, 24, 3, 7, 34]));
